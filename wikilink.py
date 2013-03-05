@@ -17,6 +17,11 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
         if "link.external.Wiki" in self.view.scope_name(location.a):
                 sublime.status_message("try to open " + scope)
                 sublime.active_window().run_command('open_url', {"url": scope})
+
+        elif "markup.underline.link.image.markdown" in self.view.scope_name(location.a):
+            sublime.status_message("try to open " + scope)
+            sublime.active_window().run_command('open_url', {"url": "file://" + directory + "/" + scope})
+
         elif "link.email.Wiki" in self.view.scope_name(location.a):
                 sublime.status_message("try to mail " + scope)
                 sublime.active_window().run_command('open_url', {"url": "mailto:"+scope})
