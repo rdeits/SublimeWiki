@@ -14,19 +14,20 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
         #find the word under the cursor
         # word = self.view.substr(location).replace("*", "")
         scope = self.view.substr(self.view.extract_scope(location.a)).replace("*", "")
+        scope_name = self.view.scope_name(location.a)
 
-        if "link.external.Wiki" in self.view.scope_name(location.a):
+        if "link.external.Wiki" in scope_name or "meta.link.inline.markdown" in scope_name:
                 sublime.status_message("try to open " + scope)
                 sublime.active_window().run_command('open_url', {"url": scope})
 
-        elif "markup.underline.link.image.markdown" in self.view.scope_name(location.a):
+        elif "markup.underline.link.image.markdown" in scope_name:
             sublime.status_message("try to open " + scope)
             sublime.active_window().run_command('open_url', {"url": "file://" + directory + slash + scope})
 
-        elif "link.email.Wiki" in self.view.scope_name(location.a):
+        elif "link.email.Wiki" in scope_name:
                 sublime.status_message("try to mail " + scope)
                 sublime.active_window().run_command('open_url', {"url": "mailto:"+scope})
-        elif "link.internal.Wiki" in self.view.scope_name(location.a):
+        elif "link.internal.Wiki" in scope_name:
             #okay, we're good. Keep on keepin' on.
 
             #compile the full file name and path.
