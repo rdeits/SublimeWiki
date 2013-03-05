@@ -31,7 +31,7 @@
 			<key>comment</key>
 			<string>Match internal wiki links and make them into links.</string>
 			<key>match</key>
-			<string>\[[a-zA-Z0-9\-_\ \/\.]+\]</string>
+			<string>\[\[[a-zA-Z0-9\-_\ \/\.]+\]\]</string>
 			<key>name</key>
 			<string>markup.underline.link.internal.Wiki</string>
 		</dict>
