@@ -1,5 +1,5 @@
 [
 	{
-		"keys":["ctrl+f11"],"command": "wiki_link"
+		"keys":["meta+shift+enter"],"command": "wiki_link"
 	}
 ]

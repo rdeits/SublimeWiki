@@ -51,6 +51,6 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
                 new_view.insert(new_edit,0,default_text)
                 new_view.end_edit(new_edit)
                 new_view.set_name("%s.md" % word)
-                new_view.set_syntax_file("Packages/User/WikiMarkdown.tmLanguage")
+                new_view.set_syntax_file("Packages/Wiki/WikiMarkdown.tmLanguage")
         else:
             sublime.status_message("Can only open WikiWords, email addresses or web addresses.")
