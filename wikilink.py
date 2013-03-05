@@ -1,7 +1,7 @@
 import sublime, sublime_plugin, os, re
 
 class WikiLinkCommand(sublime_plugin.TextCommand):
-    def run(self, edit):        
+    def run(self, edit):
         #find our current directory
         directory = os.path.split(self.view.file_name())[0]
         #find our current window
@@ -9,7 +9,7 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
         slash = "\\" if sublime.platform() == "windows" else "/"
         #find the cursor
         location = self.view.sel()[0]
-        
+
         #find the word under the cursor
         word = self.view.substr(self.view.word(location.a)).replace("*", "")
         scope = self.view.substr(self.view.extract_scope(location.a)).replace("*", "")
@@ -21,11 +21,11 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
                 sublime.status_message("try to mail " + scope)
                 sublime.active_window().run_command('open_url', {"url": "mailto:"+scope})
         elif "link.internal.Wiki" in self.view.scope_name(location.a):
-            #okay, we're good. Keep on keepin' on.        
-            
+            #okay, we're good. Keep on keepin' on.
+
             #compile the full file name and path.
 
-            new_file = directory+slash+word+".wiki"
+            new_file = directory+slash+word+".md"
             #debug section: uncomment to write to the console
             # print "Location: %d" % location.a
             # print "Selected word is '%s'" % word
@@ -42,10 +42,10 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
                 #Create a new file and slap in the default text.
                 new_view = window.new_file()
                 new_edit = new_view.begin_edit()
-                default_text = "{0}\nWrite about {0} here.".format(word)
-                new_view.insert(new_edit,0,default_text)            
+                default_text = "#{0}\n".format(word)
+                new_view.insert(new_edit,0,default_text)
                 new_view.end_edit(new_edit)
-                new_view.set_name("%s.wiki" % word)
-                new_view.set_syntax_file("Packages/Wiki/Wiki.tmLanguage")
+                new_view.set_name("%s.md" % word)
+                new_view.set_syntax_file("Packages/User/WikiMarkdown.tmLanguage")
         else:
             sublime.status_message("Can only open WikiWords, email addresses or web addresses.")
