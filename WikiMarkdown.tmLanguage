@@ -35,14 +35,6 @@
 			<key>name</key>
 			<string>markup.underline.link.internal.Wiki</string>
 		</dict>
-<!-- 		<dict>
-			<key>comment</key>
-			<string>Simplest possible web address matcher. If you think this is basic, you should see the one in the Markdown syntax file.</string>
-			<key>match</key>
-			<string>((?:https?|ftp)://\S+)</string>
-			<key>name</key>
-			<string>markup.underline.link.external.Wiki</string>
-		</dict> -->
 		<dict>
 			<key>begin</key>
 			<string>(?x)^
