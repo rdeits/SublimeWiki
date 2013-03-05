@@ -17,11 +17,11 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
         scope_name = self.view.scope_name(location.a)
 
         if "meta.link.inline.markdown" in scope_name:
-                sublime.status_message("try to open " + scope)
                 if scope.startswith('.'):
                     url = "file://" + directory + slash + scope
                 else:
                     url = scope
+                sublime.status_message("try to open " + url)
                 sublime.active_window().run_command('open_url', {"url": url})
 
         elif "markup.underline.link.image.markdown" in scope_name:
