@@ -48,7 +48,7 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
                 #Create a new file and slap in the default text.
                 new_view = window.new_file()
                 new_edit = new_view.begin_edit()
-                default_text = "#{0}\n".format(word)
+                default_text = "# {0}\n\n".format(word)
                 new_view.insert(new_edit,0,default_text)
                 new_view.end_edit(new_edit)
                 new_view.set_name("%s.md" % word)
