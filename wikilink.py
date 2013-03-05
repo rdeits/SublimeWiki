@@ -10,7 +10,7 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
         #find the cursor
         location = self.view.sel()[0]
 
-        self.view.run_command("expand_selection", {"to": "brackets"})
+        # self.view.run_command("expand_selection", {"to": "brackets"})
         #find the word under the cursor
         # word = self.view.substr(location).replace("*", "")
         scope = self.view.substr(self.view.extract_scope(location.a)).replace("*", "")
