@@ -4,3 +4,6 @@ wikilink.pyc
 Wiki.tmLanguage.cache
 
 wikilink.pyc
+.cache
+package-metadata.json
+*.cache
