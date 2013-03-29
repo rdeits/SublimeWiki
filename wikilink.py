@@ -16,6 +16,10 @@ class WikiLinkCommand(sublime_plugin.TextCommand):
 
         if "meta.link.inline.markdown" in scope_name:
             url = scope
+            if any(scope.startswith(x) for x in ["http://", "https://", "www", "ftp://", "file://"]):
+                url = scope
+            else:
+                url = "file://" + directory + slash + scope
             sublime.status_message("try to open " + url)
             sublime.active_window().run_command('open_url', {"url": url})
 
